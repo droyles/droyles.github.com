@@ -1,22 +1,310 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<link href='http://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Dosis:400,600' rel='stylesheet' type='text/css'>
-	<meta charset="utf-8"> <!--meta gives metadata for the page-->
-	<title>Dan Royles C.V.</title>
-	<link rel="stylesheet" href="style.css"> <!--href for file name-->
-</head>
-<body>
-<h1>Dan Royles</h1>
-<p>I'm a sixth year doctoral student in history at Temple University and a dissertation fellow at the Ohio State University.</p>
-<h2>Projects<h2>
-<ul>
-	<li><a href="http://danroyles.com">Personal Site</a></li>
-	<li><a href="http://afamaidshistory.omeka.net/">Omeka</a></li>
-	<li><a href="http://afamaidsoralhistory.wordpress.com/">Oral History</li>
-	<li><a href="http://www.google.com">Google</a></li>
-</ul>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-</body>
+    <title></title>
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/black.css" id="theme" />
+    <link rel="stylesheet" href="plugin/highlight/zenburn.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+	<link rel="stylesheet" href="plugin/customcontrols/style.css">
+
+
+    <script defer src="dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template">
+## Trouillot, *Silencing the Past*
+“We are never as steeped in history as when we pretend not to be.”</script></section><section  data-markdown><script type="text/template">- Why is this book called “Silencing the Past”?
+- Why is the subtitle “Power and the Production of History”?
+- What is the relationship among power, history, and silences?
+
+<aside class="notes"><ul>
+<li>emphasizes silencing as an act and a process (i.e., a verb) rather than silence as a thing (i.e., a noun)—makes clear that there is a subject doing the silencing, regardless of whether the silencing is intentional</li>
+<li>&quot;the past&quot; exists in its relationship to &quot;the present&quot; (15)</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template">- What are “historicity 1” and “historicity 2”?
+- Why are they important to what Trouillot is trying to say?
+<aside class="notes"><ul>
+<li>historicity 1 = historical process / that which happened<ul>
+<li>according to Trouillot, the positivist school of historical thinking (which he sees as normative in academic history) focuses on historicity 1 without considering the role of the historian as narrator and interpreter; is to some degree invested in &quot;objectivity&quot;</li>
+</ul>
+</li>
+<li>historicity 2 = historical narrative / that which is said to have happened<ul>
+<li>according to Trouillot, the constructivist school of historical thinking (which he associates with Hayden White and postmodernists) says that everything is narrative and facts are illusory or irrelevant</li>
+</ul>
+</li>
+<li>Trouillot&#39;s intervention is to say that a) something happened and b) how we narrate / what we can know about what happened is both important and always already shaped by the operation of power at various levels of the historical process<ul>
+<li>the two historicities are not totally coincident but do overlap, and “the more serious task” that emerges from recognizing this is to determine “not what history is… but how history works”—and determines that history works through power (25)</li>
+</ul>
+</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template">- How does power inhere in the production of historical knowledge?
+
+<aside class="notes"><ul>
+<li>through silencing, which is the opposite and flipside of mentioning, and enters in at four stages (26):<ul>
+<li>“fact creation… making of _sources_”</li>
+<li>“fact assembly… making of _archives_”</li>
+<li>“fact retrieval… making of _narratives_”</li>
+<li>“retrospective significance… making of <em>history</em> in the final instance”</li>
+</ul>
+</li>
+<li>how is he using each of these terms? what kinds of sources and archives is he talking about, for instance?<ul>
+<li>these is theoretical language, and he&#39;s talking in the abstract, so historical &quot;facts&quot; or &quot;sources&quot; include the crumbling ruins of Sans Souci-Milot and &quot;archives&quot; includes any assmblage of &quot;facts,&quot; but also “a tourist guide, a museum tour” and more (52)</li>
+</ul>
+</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template">- Why does Trouillot devote two chapters to a discussion of Haiti?
+- What does he have to say, both about power and the production of history inside Haiti and power and the production of history about Haiti?</script></section><section  data-markdown><script type="text/template">- Trouillot devotes the final full chapter to a discussion of Columbus Day—why?
+- What does he have to say about Columbus and Columbus Day?
+- How does Columbus Day relate to what he has to say about Haiti?</script></section><section  data-markdown><script type="text/template">- Trouillot refers to academic history as a “guild.”
+- Why might he have chosen to describe the profession in this way?
+
+<aside class="notes"><ul>
+<li>focuses our attention on the ways that the norms of academic history shape the knowledge that we create</li>
+<li>also denaturalizes those norms by highlighting that they are created and perpetuated by people (mainly white men!)<ul>
+<li>and by referencing a &quot;guild&quot; makes those norms seem kind of weird and outdated—<em>provincializes</em> them<ul>
+<li>&quot;A fetishism of the facts, premised on an antiquated model of the natural sciences, still dominates history and the other social sciences.&quot; (151)</li>
+<li>and indeed we should think critically about the way we do our work</li>
+</ul>
+</li>
+<li>also makes historians sound somewhat insular and rarefied<ul>
+<li>&quot;Academic historians tend to keep as far away as possible from the historical controversies that most move the public of the day.&quot; (151)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>worth pointing out both that Trouillot was painting with a broad brush, but also that a lot has changed in the last ~30 years about the ways that historians both practice their craft, in part because several generations of historians have been trained in part <em>by reading Trouillot</em>, the scholars who influenced him, and the scholars that he influenced<ul>
+<li>i.e., it&#39;s not <em>just</em> Trouillot, there&#39;s a whole postcolonial turn in history that was transformative</li>
+<li>we can also see lots of examples of publicly engaged historians today, along with more and more venues for historians to publish their work for audiences outside of the academy, although this is thanks to the internet, which has also introduced a lot of... questionable content into the public sphere</li>
+</ul>
+</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template">- What might Trouillot say in response to the piece by Sweet that we read last week?
+
+<aside class="notes"><ul>
+<li>the historian is never a neutral narrator</li>
+<li>all the distortions of historical memory that Sweet describes (a tour guide at Elmina who molds his narrative to what he thinks African American tourists want to hear, Hollywood films that play fast and loose with historical fact for dramatic effect, disingenuous SCOTUS judges) <strong>have their own histories</strong></li>
+<li>the way that Sweet talks about both Elmina and the United States in the history of Atlantic slavery fits into the &quot;formula of banalization&quot; that Trouillot describes—suggests that horrific history was marginal or incidental to larger, more important story</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template">- How can we think about the silences that Trouillot talks about in terms of our work on the *A People’s Guide to Miami*?</script></section><section ><section data-markdown><script type="text/template">### Recommended Readings
+- Hayden V. White, _The Content of the Form: Narrative Discourse and Historical Representation_ (Baltimore: Johns Hopkins University Press, 1987).
+- Peter Novick, _That Noble Dream: The “Objectivity Question” and the American Historical Profession_, (Cambridge University Press, 1988).
+- Noel Ignatiev, _How the Irish Became White_ (New York: Routledge, 1995).</script></section><section data-markdown><script type="text/template">- Gail Bederman, _Manliness and Civilization: A Cultural History of Gender and Race in the United States, 1880-1917_ (University of Chicago Press, 1996).
+- David Waldstreicher, _In the Midst of Perpetual Fetes: The Making of American Nationalism, 1776-1820_, (Chapel Hill: Omohundro Institute and University of North Carolina Press, 1997).
+- Dipesh Chakrabarty, _Provincializing Europe: Postcolonial Thought and Historical Difference_, (Princeton University Press, 2000).</script></section><section data-markdown><script type="text/template">- Mary A. Renda, _Taking Haiti: Military Occupation and the Culture of U.S. Imperialism, 1915-1940_ (Chapel Hill: University of North Carolina Press, 2001).
+- Richard R. Flores, _Remembering the Alamo: Memory, Modernity, and the Master Symbol_ (Austin: University of Texas Press, 2002).
+- [Jacqui Shine, “America Almost Had a Disney Theme Park with a Slavery Section,” Atlas Obscura, March 1, 2016](http://www.atlasobscura.com/articles/america-almost-had-a-disney-theme-park-with-a-slavery-section).
+- Chantalle F. Verna, _Haiti and the Uses of America: Post-U.S. Occupation Promises_ (New Brunswick: Rutgers University Press, 2017).</script></section></section><section  data-markdown><script type="text/template"># Zotero</script></section><section  data-markdown><script type="text/template"><!-- .slide: data-background-image="images/metadata.jpeg" --> 
+</script></section><section  data-markdown><script type="text/template">metadata is a love letter to your future self</script></section><section  data-markdown><script type="text/template">search across metadata, OCRed text, attached files, and notes—can dump stuff here and find it later
+
+<aside class="notes"><ul>
+<li>flag JSTOR issue—need to accept terms before saving article (<em>Florida Historical Quarterly</em> is available through JSTOR)</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template">### Processing research in Zotero
+
+- use [TurboScan](https://turboscanapp.com/index.html) in archive to capture PDFs/convert existing photos to PDFs
+- manually create items <!-- .element: class="fragment" data-fragment-index="1" -->
+- add notes and tag <!-- .element: class="fragment" data-fragment-index="2" -->
+
+<aside class="notes"><ul>
+<li>sometimes while doing research in archives, you&#39;ll find journal or newspaper article or report—often worthwhile do check library resources or do open web search before scanning all of a massive document that you could have gotten with OCR already done</li>
+<li>look at one processed source in Zotero: &quot;SisterLove, South Africa Board Meeting Minutes&quot;<ul>
+<li>very well tagged</li>
+<li>fairly discursive note, including some quoted material (hadn&#39;t tried OCR on this and highlighting features weren&#39;t available)<ul>
+<li>while processing research good idea to take global set of notes (like notes on your notes that can become the skeleton for an article or chapter—just keep track of where you found things, and citation export good here)</li>
+</ul>
+</li>
+<li>show file in Finder, with color coding system and archival structure reproduced</li>
+</ul>
+</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template">### Other use cases for Zotero
+- share a bunch of sources with someone else <!-- .element: class="fragment" data-fragment-index="1" -->
+- create a saved search <!-- .element: class="fragment" data-fragment-index="2" -->
+
+<aside class="notes"><ul>
+<li>demo creating a saved search for sources with tag &quot;Florida&quot; or &quot;Florida&quot; in the publisher name</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template">### useful [plugins](https://www.zotero.org/support/plugins) for zotero</script></section><section  data-markdown><script type="text/template">#### [Zutilo](https://github.com/wshanks/Zutilo)
+- copy and paste tags to/from clipboard <!-- .element: class="fragment" data-fragment-index="1" -->
+- good for batch tagging <!-- .element: class="fragment" data-fragment-index="2" --></script></section><section  data-markdown><script type="text/template">#### [Zotero OCR](https://github.com/UB-Mannheim/zotero-ocr)
+- run optical character recognition on attachments
+- [instructions by Elena Razlogova](https://publish.obsidian.md/history-notes/04+OCR+in+Zotero)</script></section><section  data-markdown><script type="text/template">### Zotero in our class
+- two folders <!-- .element: class="fragment" data-fragment-index="1" -->
+	- People's Guide research<!-- .element: class="fragment" data-fragment-index="2" -->
+	- Readings etc—for course readings and anything related that we decide to dump there <!-- .element: class="fragment" data-fragment-index="3" -->
+<aside class="notes"><ul>
+<li>when saving materials here tag with @FirstnameLastname (e.g., @DanRoyles) so I know you saved it and can give you credit for doing so when time comes; this will also be useful down the line in case any questions come up in editing and fact checking</li>
+</ul>
+</aside></script></section></div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+	<script src="plugin/mermaid/mermaid.js"></script>
+	<script src="plugin/chart/chart.min.js"></script>
+	<script src="plugin/chart/plugin.js"></script>
+	<script src="plugin/customcontrols/plugin.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+
+	if(isLight(bgColor)){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: 'plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		customcontrols: {
+			controls: [
+			]
+		},
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":960,"height":700,"margin":0.04,"controls":true,"progress":true,"slideNumber":false,"transition":"slide","transitionSpeed":"default"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
 </html>
